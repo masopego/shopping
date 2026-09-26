@@ -1,5 +1,5 @@
-import type { ProductEntityDto } from '../ProductDto'
-import { ProductListEntityDtoMother } from './ProductListEntityDtoMother'
+import type { ProductEntityDto } from '../ProductDto';
+import { ProductListEntityDtoMother } from './ProductListEntityDtoMother';
 
 export const ProductEntityDtoMother = {
   create(overrides: Partial<ProductEntityDto> = {}): ProductEntityDto {
@@ -28,12 +28,16 @@ export const ProductEntityDtoMother = {
         ProductListEntityDtoMother.create({ id: 'GPX-8A', brand: 'Google', name: 'Pixel 8a', basePrice: 459 }),
       ],
       ...overrides,
-    }
+    };
   },
 
   withoutOptions(): ProductEntityDto {
-    const { colorOptions: _colorOptions, storageOptions: _storageOptions, similarProducts: _similarProducts, ...dto } =
-      ProductEntityDtoMother.create()
-    return dto as ProductEntityDto
+    const {
+      colorOptions: _colorOptions,
+      storageOptions: _storageOptions,
+      similarProducts: _similarProducts,
+      ...dto
+    } = ProductEntityDtoMother.create();
+    return dto as ProductEntityDto;
   },
-}
+};

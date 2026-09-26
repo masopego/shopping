@@ -1,21 +1,15 @@
-import Link from 'next/link'
-import { productRepository } from '@/core/infrastructure/repositories/ApiProductRepository'
+import { productRepository } from '@/core/infrastructure/repositories/ApiProductRepository';
+import { ProductGrid } from '@/ui/features/product/components/product-grid';
 
-export const dynamic = 'force-dynamic'
+export const dynamic = 'force-dynamic';
 
 export default async function HomePage() {
-  const products = await productRepository.getProducts({ limit: 20 })
+  const products = await productRepository.getProducts({ limit: 20 });
 
   return (
     <main>
       <h1>Phones</h1>
-      <ul>
-        {products.map((product) => (
-          <li key={product.id}>
-            <Link href={`/products/${product.id}`}>{product.name}</Link>
-          </li>
-        ))}
-      </ul>
+      <ProductGrid products={products} />
     </main>
-  )
+  );
 }

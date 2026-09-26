@@ -1,5 +1,5 @@
-import type { ProductDetails } from '../ProductDetails'
-import { ProductMother } from './ProductMother'
+import type { ProductDetails } from '../ProductDetails';
+import { ProductMother } from './ProductMother';
 
 export const ProductDetailsMother = {
   create(overrides: Partial<ProductDetails> = {}): ProductDetails {
@@ -26,6 +26,6 @@ export const ProductDetailsMother = {
       storageOptions: [{ capacity: '256 GB', price: 1329 }],
       similarProducts: [ProductMother.create({ id: 'GPX-8A', brand: 'Google', name: 'Pixel 8a', basePrice: 459 })],
       ...overrides,
-    }
+    };
   },
-}
+};
