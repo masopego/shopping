@@ -57,6 +57,14 @@ describe('ApiProductRepository', () => {
 
       await expect(request).rejects.toBe(error);
     });
+
+    it('returns each product only once when the API repeats it', async () => {
+      const dto = ProductListEntityDtoMother.create();
+      httpGet.mockResolvedValue([dto, dto]);
+      const products = await repository.getProducts();
+
+      expect(products).toEqual([ProductMother.create()]);
+    });
   });
 
   describe('getProductById', () => {

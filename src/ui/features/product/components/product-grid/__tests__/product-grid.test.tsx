@@ -10,9 +10,9 @@ describe('ProductGrid', () => {
     expect(screen.getAllByRole('listitem')).toHaveLength(2);
   });
 
-  it('renders an empty list when there are no products', () => {
+  it('renders nothing when there are no products', () => {
     render(<ProductGrid products={[]} />);
 
-    expect(screen.queryAllByRole('listitem')).toHaveLength(0);
+    expect(screen.queryByRole('list')).not.toBeInTheDocument();
   });
 });
