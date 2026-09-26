@@ -1,4 +1,4 @@
-import type { ProductListEntityDto } from '../ProductDto'
+import type { ProductListEntityDto } from '../ProductDto';
 
 export const ProductListEntityDtoMother = {
   create(overrides: Partial<ProductListEntityDto> = {}): ProductListEntityDto {
@@ -9,6 +9,6 @@ export const ProductListEntityDtoMother = {
       basePrice: 1329,
       imageUrl: 'https://example.com/images/SMG-S24U.png',
       ...overrides,
-    }
+    };
   },
-}
+};

@@ -1,4 +1,4 @@
-import type { Product } from '../Product'
+import type { Product } from '../Product';
 
 export const ProductMother = {
   create(overrides: Partial<Product> = {}): Product {
@@ -9,6 +9,6 @@ export const ProductMother = {
       basePrice: 1329,
       imageUrl: 'https://example.com/images/SMG-S24U.png',
       ...overrides,
-    }
+    };
   },
-}
+};
