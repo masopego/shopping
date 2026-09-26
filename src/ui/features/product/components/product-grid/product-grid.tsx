@@ -8,12 +8,16 @@ interface ProductGridProps {
   products: Product[];
 }
 
-export const ProductGrid = ({ products }: ProductGridProps): React.JSX.Element => (
-  <StyledProductGrid>
-    {products.map((product) => (
-      <StyledProductGridItem key={`${product.id}-product`}>
-        <ProductCard product={product} />
-      </StyledProductGridItem>
-    ))}
-  </StyledProductGrid>
-);
+export const ProductGrid = ({ products }: ProductGridProps): React.JSX.Element | null => {
+  if (products.length === 0) return null;
+
+  return (
+    <StyledProductGrid>
+      {products.map((product) => (
+        <StyledProductGridItem key={`${product.id}-product`}>
+          <ProductCard product={product} />
+        </StyledProductGridItem>
+      ))}
+    </StyledProductGrid>
+  );
+};
