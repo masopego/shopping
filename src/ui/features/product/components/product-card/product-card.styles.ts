@@ -1,7 +1,19 @@
 import Link from 'next/link';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const HOVER_TRANSITION = '0.4s ease';
+const LINE_COLOR = '#000';
+
+export const PRODUCT_CARD_SIZE = '21.5rem';
+
+export const productCardLines = css`
+  box-shadow:
+    inset 1px 0 0 0 ${LINE_COLOR},
+    inset 0 1px 0 0 ${LINE_COLOR},
+    1px 0 0 0 ${LINE_COLOR},
+    0 1px 0 0 ${LINE_COLOR},
+    1px 1px 0 0 ${LINE_COLOR};
+`;
 
 export const StyledProductCard = styled(Link)`
   position: relative;
