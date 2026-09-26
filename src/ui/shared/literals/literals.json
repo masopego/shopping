@@ -1,0 +1,35 @@
+{
+  "common": {
+    "price": "{price} EUR",
+    "continueShopping": "Continue shopping"
+  },
+  "header": {
+    "logoAlt": "MBST",
+    "cartLink": "Cart ({count})"
+  },
+  "searchInput": {
+    "clear": "Clear search"
+  },
+  "productSearch": {
+    "label": "Search for a smartphone",
+    "placeholder": "Search for a smartphone...",
+    "results": {
+      "one": "{count} result",
+      "other": "{count} results"
+    }
+  },
+  "productDetail": {
+    "back": "Back",
+    "storage": "Storage",
+    "color": "Color",
+    "addToCart": "Add to cart"
+  },
+  "cart": {
+    "title": "Cart",
+    "empty": "Your cart is empty",
+    "quantity": "Quantity: {quantity}",
+    "remove": "Remove",
+    "removeItem": "Remove {name}",
+    "total": "Total: {total}"
+  }
+}

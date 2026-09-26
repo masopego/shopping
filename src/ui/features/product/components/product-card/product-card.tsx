@@ -4,6 +4,7 @@ import Image from 'next/image';
 import type { Product } from '@/core/domain/models/Product';
 import { ROUTES } from '@/ui/shared/routes';
 import { StyledBrand, StyledImageWrapper, StyledInfoRow, StyledProductCard } from './product-card.styles';
+import { LITERALS, formatLiteral } from '@/ui/shared/literals';
 
 interface ProductCardProps {
   product: Product;
@@ -24,7 +25,7 @@ export const ProductCard = ({ product }: ProductCardProps): React.JSX.Element =>
       <StyledBrand>{product.brand}</StyledBrand>
       <StyledInfoRow>
         <span>{product.name}</span>
-        <span>{product.basePrice} EUR</span>
+        <span>{formatLiteral(LITERALS.common.price, { price: product.basePrice })}</span>
       </StyledInfoRow>
     </StyledProductCard>
   );
