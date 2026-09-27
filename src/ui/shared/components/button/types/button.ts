@@ -9,4 +9,5 @@ export interface IButtonProps {
   loading?: boolean;
   loader?: ReactNode;
   type?: HTMLButtonElement['type'];
+  fullWidth?: boolean;
 }

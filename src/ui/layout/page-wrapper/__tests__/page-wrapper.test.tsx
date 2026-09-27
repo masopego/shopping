@@ -19,6 +19,16 @@ describe('PageWrapper', () => {
       </PageWrapper>,
     );
 
-    expect(screen.getByText('Content').parentElement).toHaveStyle({ paddingInline: '1rem' });
+    expect(screen.getByText('Content').parentElement).toHaveStyle('--page-padding: 1rem');
+  });
+
+  it('leaves space at the end of the page', () => {
+    render(
+      <PageWrapper>
+        <p>Content</p>
+      </PageWrapper>,
+    );
+
+    expect(screen.getByText('Content').parentElement).toHaveStyle({ paddingBottom: '64px' });
   });
 });

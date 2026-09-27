@@ -24,6 +24,13 @@ describe('ProductMapper', () => {
       expect(details).toEqual(ProductDetailsMother.create());
     });
 
+    it('returns each similar product only once when the API repeats it', () => {
+      const similar = ProductListEntityDtoMother.create({ id: 'GPX-8A' });
+      const details = toProductDetails(ProductEntityDtoMother.create({ similarProducts: [similar, similar] }));
+
+      expect(details.similarProducts).toHaveLength(1);
+    });
+
     it('defaults to empty lists when the API omits the options', () => {
       const dto = ProductEntityDtoMother.withoutOptions();
       const details = toProductDetails(dto);

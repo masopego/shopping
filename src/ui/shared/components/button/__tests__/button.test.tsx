@@ -61,4 +61,22 @@ describe('Button', () => {
 
     expect(screen.getByRole('button')).toHaveStyle({ backgroundColor: '#fff', color: '#000' });
   });
+
+  it('keeps its natural width by default', () => {
+    renderButton();
+
+    expect(screen.getByRole('button')).toHaveStyle({ width: 'auto' });
+  });
+
+  it('takes the full width when fullWidth is set', () => {
+    renderButton({ fullWidth: true });
+
+    expect(screen.getByRole('button')).toHaveStyle({ width: '100%' });
+  });
+
+  it('has a grey background when it is disabled', () => {
+    renderButton({ disabled: true });
+
+    expect(screen.getByRole('button')).toHaveStyle({ backgroundColor: '#f3f2f2' });
+  });
 });

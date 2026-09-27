@@ -1,7 +1,8 @@
 {
   "common": {
     "price": "{price} EUR",
-    "continueShopping": "Continue shopping"
+    "continueShopping": "Continue shopping",
+    "fromPrice": "From {price}"
   },
   "header": {
     "logoAlt": "MBST",
@@ -20,9 +21,24 @@
   },
   "productDetail": {
     "back": "Back",
-    "storage": "Storage",
-    "color": "Color",
-    "addToCart": "Add to cart"
+    "storageTitle": "Storage ¿How much space do you need?",
+    "colorTitle": "Color. Pick your favourite.",
+    "addToCart": "Añadir",
+    "specificationsTitle": "Specifications",
+    "similarItemsTitle": "Similar items",
+    "specifications": {
+      "brand": "Brand",
+      "name": "Name",
+      "description": "Description",
+      "screen": "Screen",
+      "resolution": "Resolution",
+      "processor": "Processor",
+      "mainCamera": "Main camera",
+      "selfieCamera": "Selfie camera",
+      "battery": "Battery",
+      "os": "OS",
+      "screenRefreshRate": "Screen refresh rate"
+    }
   },
   "cart": {
     "title": "Cart",

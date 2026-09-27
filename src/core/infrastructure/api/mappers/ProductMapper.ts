@@ -1,6 +1,7 @@
 import type { Product } from '../../../domain/models/Product';
 import type { ProductDetails } from '../../../domain/models/ProductDetails';
 import type { ProductEntityDto, ProductListEntityDto } from '../dtos/ProductDto';
+import { uniqueBy } from '../../../shared/utils/unique-by';
 
 export const toProduct = (dto: ProductListEntityDto): Product => ({
   id: dto.id,
@@ -20,5 +21,5 @@ export const toProductDetails = (dto: ProductEntityDto): ProductDetails => ({
   specs: { ...dto.specs },
   colorOptions: (dto.colorOptions ?? []).map((color) => ({ ...color })),
   storageOptions: (dto.storageOptions ?? []).map((storage) => ({ ...storage })),
-  similarProducts: (dto.similarProducts ?? []).map(toProduct),
+  similarProducts: uniqueBy(dto.similarProducts ?? [], (similar) => similar.id).map(toProduct),
 });
