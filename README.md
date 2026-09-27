@@ -183,6 +183,9 @@ I tried to keep accessibility in mind throughout the app: semantic HTML (lists, 
 controls, accessible names for icon buttons and links, `aria-live` regions for the search results, visible focus
 styles and respect for reduced motion.
 
+https://github.com/user-attachments/assets/ff117f52-f0e2-4a32-b83b-b55641887ceb
+
+
 <br>
 
 **What I would do next 🔭**
