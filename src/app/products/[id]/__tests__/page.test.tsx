@@ -14,6 +14,7 @@ vi.mock('next/navigation', () => ({
   notFound: vi.fn(() => {
     throw new Error('NEXT_NOT_FOUND');
   }),
+  useRouter: () => ({ push: vi.fn() }),
 }));
 
 const { productRepositoryMock } = await import('@/core/infrastructure/repositories/__mocks__/productRepositoryMock');

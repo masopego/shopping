@@ -1,9 +1,9 @@
 import { notFound } from 'next/navigation';
 import { HttpError } from '@/core/infrastructure/http/httpError';
 import { productRepository } from '@/core/infrastructure/repositories/ApiProductRepository';
+import { AddToCartProductOverview } from '@/ui/features/cart/components/add-to-cart-product-overview';
 import { GoBack } from '@/ui/features/product-detail/components/go-back';
 import { ProductDetailLayout } from '@/ui/features/product-detail/components/product-detail-layout';
-import { ProductOverview } from '@/ui/features/product-detail/components/product-overview';
 import { ProductSpecifications } from '@/ui/features/product-detail/components/product-specifications';
 import { SimilarProducts } from '@/ui/features/product-detail/components/similar-products';
 
@@ -28,7 +28,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
     <main>
       <GoBack />
       <ProductDetailLayout
-        overview={<ProductOverview product={product} />}
+        overview={<AddToCartProductOverview product={product} />}
         specifications={<ProductSpecifications product={product} />}
         similarProducts={<SimilarProducts products={product.similarProducts} />}
       />

@@ -29,6 +29,6 @@ describe('PageWrapper', () => {
       </PageWrapper>,
     );
 
-    expect(screen.getByText('Content').parentElement).toHaveStyle({ paddingBottom: '64px' });
+    expect(screen.getByText('Content').parentElement).toHaveStyle('--page-end-spacing: 4rem');
   });
 });

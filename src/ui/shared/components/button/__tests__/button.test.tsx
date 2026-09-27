@@ -79,4 +79,14 @@ describe('Button', () => {
 
     expect(screen.getByRole('button')).toHaveStyle({ backgroundColor: '#f3f2f2' });
   });
+
+  it('renders a link that looks like a button when it has an href', () => {
+    render(
+      <Button variant={ButtonVariant.SECONDARY} href="/">
+        Continue shopping
+      </Button>,
+    );
+
+    expect(screen.getByRole('link', { name: 'Continue shopping' })).toHaveAttribute('href', '/');
+  });
 });

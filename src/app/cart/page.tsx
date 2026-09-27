@@ -1,8 +1,9 @@
+import { CartView } from '@/ui/features/cart/components/cart-view';
 
 export default function CartPage() {
   return (
     <main>
-      <h1>Cart</h1>
+      <CartView />
     </main>
-  )
+  );
 }

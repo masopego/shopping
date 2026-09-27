@@ -14,12 +14,16 @@ const variantStyles = {
 
 export const StyledButton = styled.button<{ $variant: ButtonVariant; $fullWidth: boolean }>`
   appearance: none;
+  display: inline-block;
+  box-sizing: border-box;
   width: ${({ $fullWidth }) => ($fullWidth ? '100%' : 'auto')};
+  text-align: center;
+  text-decoration: none;
   border: 1px solid #000;
   text-transform: uppercase;
   cursor: pointer;
   font-size: 0.75rem;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 1rem;
 
   ${({ $variant }) => variantStyles[$variant]}
 

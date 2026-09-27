@@ -41,11 +41,11 @@
     }
   },
   "cart": {
-    "title": "Cart",
-    "empty": "Your cart is empty",
+    "title": "Cart ({count})",
     "quantity": "Quantity: {quantity}",
-    "remove": "Remove",
-    "removeItem": "Remove {name}",
-    "total": "Total: {total}"
+    "remove": "Eliminar",
+    "removeItem": "Eliminar {name}",
+    "total": "Total",
+    "pay": "Pay"
   }
 }
