@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 
 export const StyledTrack = styled.ul`
+  --bleed: var(--carousel-bleed, 0px);
+
   display: flex;
-  margin: 0 calc(-1 * var(--carousel-bleed-right, 0px)) 0 0;
-  padding: 0 1px 1px 0;
+  margin: 0 calc(-1 * var(--bleed));
+  padding: 0 calc(var(--bleed) + 1px) 1px var(--bleed);
+  scroll-padding-inline: var(--bleed);
   list-style: none;
   overflow-x: auto;
   scroll-snap-type: x mandatory;

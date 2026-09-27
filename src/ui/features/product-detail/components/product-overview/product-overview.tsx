@@ -2,8 +2,7 @@
 
 import Image from 'next/image';
 import { useState, type FormEvent } from 'react';
-import type { ProductDetails } from '@/core/domain/models/ProductDetails';
-import { useCart } from '@/ui/features/cart/state/use-cart';
+import type { ColorOption, ProductDetails, StorageOption } from '@/core/domain/models/ProductDetails';
 import { Button, ButtonVariant } from '@/ui/shared/components/button';
 import { LITERALS, formatLiteral } from '@/ui/shared/literals';
 import { ColorSelector } from '../color-selector';
@@ -16,12 +15,18 @@ import {
   StyledProductOverview,
 } from './product-overview.styles';
 
-interface ProductOverviewProps {
+export interface ProductConfiguration {
   product: ProductDetails;
+  storage: StorageOption;
+  color: ColorOption;
 }
 
-export const ProductOverview = ({ product }: ProductOverviewProps): React.JSX.Element => {
-  const { addItem } = useCart();
+interface ProductOverviewProps {
+  product: ProductDetails;
+  onAddToCart?: (configuration: ProductConfiguration) => void;
+}
+
+export const ProductOverview = ({ product, onAddToCart }: ProductOverviewProps): React.JSX.Element => {
   const [storageCapacity, setStorageCapacity] = useState<string>();
   const [colorName, setColorName] = useState<string>();
 
@@ -40,15 +45,7 @@ export const ProductOverview = ({ product }: ProductOverviewProps): React.JSX.El
     event.preventDefault();
     if (!selectedStorage || !selectedColor) return;
 
-    addItem({
-      productId: product.id,
-      brand: product.brand,
-      name: product.name,
-      imageUrl: selectedColor.imageUrl,
-      colorName: selectedColor.name,
-      storageCapacity: selectedStorage.capacity,
-      price: selectedStorage.price,
-    });
+    onAddToCart?.({ product, storage: selectedStorage, color: selectedColor });
   };
 
   return (

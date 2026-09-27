@@ -4,15 +4,18 @@ import { MEDIA_QUERIES } from '@/ui/shared/styles/breakpoints';
 const SECTION_SPACING = '5rem';
 
 export const StyledProductDetailLayout = styled.div`
+  --content-max-width: 100cqw;
+
+  max-width: var(--content-max-width);
   margin: 3rem auto 0;
   color: #000;
 
   @media ${MEDIA_QUERIES.TABLET} {
-    max-width: 47.125rem;
+    --content-max-width: 47.125rem;
   }
 
   @media ${MEDIA_QUERIES.DESKTOP} {
-    max-width: 75rem;
+    --content-max-width: 75rem;
     margin: 11.375rem auto 0;
   }
 `;

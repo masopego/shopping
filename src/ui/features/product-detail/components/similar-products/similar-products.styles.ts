@@ -8,7 +8,5 @@ export const StyledSimilarProductsItem = styled.li`
 `;
 
 export const StyledSimilarProducts = styled.section`
-  /* The carousel reaches the right edge of the screen: the space between the content and the edge of
-     the page (100cqw is the width of the page) plus the page padding */
-  --carousel-bleed-right: calc((100cqw - 100%) / 2 + var(--page-padding, 0px));
+  --carousel-bleed: calc((100cqw - min(var(--content-max-width, 100cqw), 100cqw)) / 2 + var(--page-padding, 0px));
 `;

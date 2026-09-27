@@ -1,8 +1,6 @@
-import { screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { CartMother } from '@/core/domain/models/__mothers__/CartMother';
 import { ProductDetailsMother } from '@/core/domain/models/__mothers__/ProductDetailsMother';
-import { renderWithCartProvider } from '@/ui/features/cart/state/__mocks__/render-with-cart-provider';
 import { ProductOverview } from '../product-overview';
 
 const product = ProductDetailsMother.create({
@@ -17,7 +15,8 @@ const product = ProductDetailsMother.create({
   ],
 });
 
-const renderOverview = () => renderWithCartProvider(<ProductOverview product={product} />);
+const renderOverview = (onAddToCart = vi.fn()) =>
+  render(<ProductOverview product={product} onAddToCart={onAddToCart} />);
 
 const getImageSrc = () => screen.getByRole('img').getAttribute('src');
 
@@ -84,19 +83,17 @@ describe('ProductOverview', () => {
     expect(addToCartButton()).toBeEnabled();
   });
 
-  it('adds the selected configuration to the cart', async () => {
-    const { repository } = renderOverview();
+  it('notifies the selected configuration when adding it to the cart', async () => {
+    const onAddToCart = vi.fn();
+    renderOverview(onAddToCart);
     await userEvent.click(screen.getByRole('radio', { name: '512 GB' }));
     await userEvent.click(screen.getByRole('radio', { name: 'Titanium Black' }));
     await userEvent.click(addToCartButton());
 
-    expect(repository.save).toHaveBeenCalledWith(
-      CartMother.withOneItem({
-        id: 'SMG-S24U-Titanium Black-512 GB',
-        imageUrl: 'https://example.com/black.png',
-        storageCapacity: '512 GB',
-        price: 1329,
-      }),
-    );
+    expect(onAddToCart).toHaveBeenCalledWith({
+      product,
+      storage: { capacity: '512 GB', price: 1329 },
+      color: { name: 'Titanium Black', hexCode: '#000000', imageUrl: 'https://example.com/black.png' },
+    });
   });
 });
