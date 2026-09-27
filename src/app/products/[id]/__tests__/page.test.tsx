@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { ProductDetailsMother } from '@/core/domain/models/__mothers__/ProductDetailsMother';
 import { HttpError } from '@/core/infrastructure/http/httpError';
 import { renderWithCartProvider } from '@/ui/features/cart/state/__mocks__/render-with-cart-provider';
-import ProductDetailPage from '../page';
+import ProductDetailPage, { generateMetadata } from '../page';
 
 vi.mock('@/core/infrastructure/repositories/ApiProductRepository', async () => {
   const { productRepositoryMock } = await import('@/core/infrastructure/repositories/__mocks__/productRepositoryMock');
@@ -78,5 +78,14 @@ describe('ProductDetailPage', () => {
     productRepositoryMock.getProductById.mockRejectedValue(error);
 
     await expect(renderPage('SMG-S24U')).rejects.toBe(error);
+  });
+
+  it('uses the brand and name of the product as the page title', async () => {
+    productRepositoryMock.getProductById.mockResolvedValue(
+      ProductDetailsMother.create({ brand: 'Samsung', name: 'Galaxy S24 Ultra' }),
+    );
+    const metadata = await generateMetadata({ params: Promise.resolve({ id: 'SMG-S24U' }) });
+
+    expect(metadata.title).toBe('Samsung Galaxy S24 Ultra');
   });
 });

@@ -76,3 +76,16 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation-duration: 250ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none;
+  }
+}

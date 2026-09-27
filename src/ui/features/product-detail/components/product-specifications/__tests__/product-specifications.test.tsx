@@ -11,16 +11,16 @@ describe('ProductSpecifications', () => {
     expect(screen.getByRole('heading', { name: 'Specifications' })).toBeInTheDocument();
   });
 
-  it('shows a row for the brand, the name, the description and each technical spec', () => {
+  it('shows an item for the brand, the name, the description and each technical spec', () => {
     render(<ProductSpecifications product={product} />);
 
-    expect(screen.getAllByRole('row')).toHaveLength(11);
+    expect(screen.getAllByRole('listitem')).toHaveLength(11);
   });
 
-  it('shows each spec next to its label', () => {
+  it('shows each spec in the same item as its label', () => {
     render(<ProductSpecifications product={product} />);
 
-    expect(screen.getByRole('row', { name: `Battery ${product.specs.battery}` })).toBeInTheDocument();
+    expect(screen.getByText('Battery').closest('li')).toHaveTextContent(`Battery${product.specs.battery}`);
   });
 
   it('shows the description', () => {

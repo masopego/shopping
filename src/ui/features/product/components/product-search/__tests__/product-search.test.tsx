@@ -27,7 +27,7 @@ describe('ProductSearch', () => {
   it('shows the current search in the field', () => {
     renderProductSearch({ search: 'samsung' });
 
-    expect(screen.getByRole('searchbox', { name: 'Search for a smartphone' })).toHaveValue('samsung');
+    expect(screen.getByPlaceholderText('Search for a smartphone...')).toHaveValue('samsung');
   });
 
   it('shows the number of results', () => {

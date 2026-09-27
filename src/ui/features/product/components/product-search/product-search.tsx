@@ -56,12 +56,7 @@ export const ProductSearch = ({ search, resultsCount }: ProductSearchProps): Rea
 
   return (
     <StyledProductSearch aria-busy={isPending}>
-      <SearchInput
-        value={value}
-        onChange={handleChange}
-        label={LITERALS.productSearch.label}
-        placeholder={LITERALS.productSearch.placeholder}
-      />
+      <SearchInput value={value} onChange={handleChange} placeholder={LITERALS.productSearch.placeholder} />
       <StyledResultsCount aria-live="polite">
         {formatLiteral(resultsCount === 1 ? LITERALS.productSearch.results.one : LITERALS.productSearch.results.other, {
           count: resultsCount,

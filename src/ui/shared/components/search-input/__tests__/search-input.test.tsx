@@ -4,13 +4,19 @@ import { SearchInput } from '../search-input';
 import type { ISearchInputProps } from '../types/search-input';
 
 const renderSearchInput = (props: Partial<ISearchInputProps> = {}) =>
-  render(<SearchInput value="" onChange={vi.fn()} label="Search" {...props} />);
+  render(<SearchInput value="" onChange={vi.fn()} {...props} />);
 
 describe('SearchInput', () => {
   it('renders a search field with the given label', () => {
     renderSearchInput({ label: 'Search for a smartphone' });
 
     expect(screen.getByRole('searchbox', { name: 'Search for a smartphone' })).toBeInTheDocument();
+  });
+
+  it('does not add a separate label when there is none', () => {
+    renderSearchInput({ placeholder: 'Search for a smartphone...' });
+
+    expect(screen.getByRole('searchbox')).not.toHaveAttribute('aria-label');
   });
 
   it('shows the given placeholder', () => {

@@ -12,7 +12,6 @@
     "clear": "Clear search"
   },
   "productSearch": {
-    "label": "Search for a smartphone",
     "placeholder": "Search for a smartphone...",
     "results": {
       "one": "{count} result",
@@ -47,5 +46,12 @@
     "removeItem": "Eliminar {name}",
     "total": "Total",
     "pay": "Pay"
+  },
+  "pageTitles": {
+    "template": "%s | MBST",
+    "default": "MBST",
+    "home": "Phones",
+    "productDetail": "{brand} {name}",
+    "cart": "Cart"
   }
 }

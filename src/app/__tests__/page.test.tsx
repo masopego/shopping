@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { ProductMother } from '@/core/domain/models/__mothers__/ProductMother';
-import HomePage from '../page';
+import HomePage, { metadata } from '../page';
 
 vi.mock('@/core/infrastructure/repositories/ApiProductRepository', async () => {
   const { productRepositoryMock } = await import('@/core/infrastructure/repositories/__mocks__/productRepositoryMock');
@@ -61,5 +61,9 @@ describe('HomePage', () => {
     await renderPage();
 
     expect(screen.getAllByRole('listitem')).toHaveLength(2);
+  });
+
+  it('has its own page title, announced to screen readers when navigating', () => {
+    expect(metadata.title).toEqual({ absolute: 'Phones | MBST' });
   });
 });

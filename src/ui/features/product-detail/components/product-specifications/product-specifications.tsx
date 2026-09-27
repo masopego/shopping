@@ -3,7 +3,7 @@
 import type { ProductDetails } from '@/core/domain/models/ProductDetails';
 import { LITERALS } from '@/ui/shared/literals';
 import { StyledSectionTitle } from '../../styles/section-title.styles';
-import { StyledTable } from './product-specifications.styles';
+import { StyledSpecification, StyledSpecificationLabel, StyledSpecifications } from './product-specifications.styles';
 
 interface ProductSpecificationsProps {
   product: ProductDetails;
@@ -29,16 +29,14 @@ export const ProductSpecifications = ({ product }: ProductSpecificationsProps): 
   return (
     <section>
       <StyledSectionTitle>{LITERALS.productDetail.specificationsTitle}</StyledSectionTitle>
-      <StyledTable>
-        <tbody>
-          {rows.map(({ label, value }) => (
-            <tr key={label}>
-              <th scope="row">{label}</th>
-              <td>{value}</td>
-            </tr>
-          ))}
-        </tbody>
-      </StyledTable>
+      <StyledSpecifications>
+        {rows.map(({ label, value }) => (
+          <StyledSpecification key={label}>
+            <StyledSpecificationLabel>{label}</StyledSpecificationLabel>
+            <div>{value}</div>
+          </StyledSpecification>
+        ))}
+      </StyledSpecifications>
     </section>
   );
 };
